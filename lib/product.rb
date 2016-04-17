@@ -10,6 +10,10 @@ class Product
     add_to_products
   end
 
+  def in_stock?
+    @stock > 0
+  end
+
   def self.find_by_title(title)
     index = @@products.find_index { |product| product.title == title }
     @@products[index] if index
