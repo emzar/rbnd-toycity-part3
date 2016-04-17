@@ -8,6 +8,11 @@ class Product
     add_to_products
   end
 
+  def self.find_by_title(title)
+    index = @@products.find_index { |product| product.title == title }
+    @@products[index] if index
+  end
+
   def self.all
     @@products
   end
