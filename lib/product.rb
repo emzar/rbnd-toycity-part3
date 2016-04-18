@@ -23,6 +23,10 @@ class Product
     @@products
   end
 
+  def self.in_stock
+    @@products.select(&:in_stock?)
+  end
+
   private
 
   def add_to_products
