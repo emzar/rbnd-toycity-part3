@@ -11,6 +11,10 @@ class Transaction
     @@transactions << self
   end
 
+  def self.find(id)
+    @@transactions[id-1]
+  end
+
   def self.all
     @@transactions
   end
