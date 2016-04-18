@@ -10,10 +10,6 @@ class Brand
     puts "#{error.class}: #{error}"
   end
 
-  def in_stock?
-    @stock > 0
-  end
-
   def self.find_by_title(title)
     index = @@brands.index { |brand| brand.title == title }
     @@brands[index] if index
@@ -21,6 +17,18 @@ class Brand
 
   def self.all
     @@brands
+  end
+
+  def products
+    Product.by_brand(title)
+  end
+
+  def stock
+    products.map(&:stock).reduce(:+)
+  end
+
+  def average_price
+    (products.map(&:price).reduce(:+) / products.size).round(2)
   end
 
   private
