@@ -31,6 +31,10 @@ class Product
     @@products.select(&:in_stock?)
   end
 
+  def remove_one_from_stock!
+    @stock -= 1
+  end
+
   private
 
   def add_to_products
