@@ -21,6 +21,10 @@ class Customer
     @@customers
   end
 
+  def purchase(product)
+    Transaction.new(self, product)
+  end
+
   private
 
   def add_to_customers

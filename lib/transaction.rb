@@ -10,4 +10,8 @@ class Transaction
     @id = @@transactions.size + 1
     @@transactions << self
   end
+
+  def self.all
+    @@transactions
+  end
 end
