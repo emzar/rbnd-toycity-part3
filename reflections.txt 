@@ -1,0 +1,12 @@
+How long did you spend working on this project?
+3 hours
+
+What was the most rewarding challenge you conquered?
+print error message from exceptions
+
+What two additional features did you build? Why?
+- brand stuff (ctor, stock and average price stats)
+- finding transactions by customer and product
+
+Where do you still have room to grow?
+implement additional stats for purchases as in toycity part 1
