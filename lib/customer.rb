@@ -12,6 +12,11 @@ class Customer
     end
   end
 
+  def self.find_by_name(name)
+    index = @@customers.index { |customer| customer.name == name }
+    @@customers[index] if index
+  end
+
   def self.all
     @@customers
   end
@@ -19,7 +24,7 @@ class Customer
   private
 
   def add_to_customers
-    raise DuplicateCustomerError, name if @@customers.index { |c| c.name == name }
+    raise DuplicateCustomerError, name if Customer.find_by_name(name)
     @@customers << self
   end
 end
