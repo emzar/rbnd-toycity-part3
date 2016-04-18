@@ -7,7 +7,11 @@ class Product
     @title = options[:title]
     @price = options[:price]
     @stock = options[:stock]
-    add_to_products
+    begin
+      add_to_products
+    rescue StandardError => error
+      puts "#{error.class}: #{error}"
+    end
   end
 
   def in_stock?
@@ -15,7 +19,7 @@ class Product
   end
 
   def self.find_by_title(title)
-    index = @@products.find_index { |product| product.title == title }
+    index = @@products.index { |product| product.title == title }
     @@products[index] if index
   end
 
@@ -30,7 +34,7 @@ class Product
   private
 
   def add_to_products
-    raise DuplicateProductError if @@products.find_index { |product| product.title == @title }
+    raise DuplicateProductError, title if Product.find_by_title(title)
     @@products << self
   end
 end
