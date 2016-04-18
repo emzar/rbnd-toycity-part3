@@ -4,6 +4,7 @@ class Transaction
   @@transactions = []
 
   def initialize(customer, product)
+    raise OutOfStockError, product.title unless product.in_stock?
     @customer = customer
     @product = product
     @product.remove_one_from_stock!

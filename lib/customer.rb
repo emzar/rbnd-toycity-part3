@@ -5,11 +5,9 @@ class Customer
 
   def initialize(options = {})
     @name = options[:name]
-    begin
-      add_to_customers
-    rescue StandardError => error
-      puts "#{error.class}: #{error}"
-    end
+    add_to_customers
+  rescue StandardError => error
+    puts "#{error.class}: #{error}"
   end
 
   def self.find_by_name(name)
@@ -23,6 +21,8 @@ class Customer
 
   def purchase(product)
     Transaction.new(self, product)
+  rescue StandardError => error
+    puts "#{error.class}: #{error}"
   end
 
   private

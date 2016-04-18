@@ -7,11 +7,9 @@ class Product
     @title = options[:title]
     @price = options[:price]
     @stock = options[:stock]
-    begin
-      add_to_products
-    rescue StandardError => error
-      puts "#{error.class}: #{error}"
-    end
+    add_to_products
+  rescue StandardError => error
+    puts "#{error.class}: #{error}"
   end
 
   def in_stock?
