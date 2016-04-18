@@ -72,8 +72,10 @@ walter.purchase(firehouse)
 
 puts nanoblock.brand.title
 
-puts Product.by_brand('Lego').count
+puts Product.find_by_brand(lego).count
 
 puts lego.stock
 
 puts lego.average_price
+
+puts Transaction.find_by_customer(walter)

@@ -17,10 +17,6 @@ class Product
     @stock > 0
   end
 
-  def brand?(brand_title)
-    brand.title == brand_title
-  end
-
   def self.find_by_title(title)
     index = @@products.index { |product| product.title == title }
     @@products[index] if index
@@ -34,8 +30,8 @@ class Product
     @@products.select(&:in_stock?)
   end
 
-  def self.by_brand(brand_title)
-    @@products.select { |product| product.brand?(brand_title) }
+  def self.find_by_brand(brand)
+    @@products.select { |product| product.brand == brand }
   end
 
   def remove_one_from_stock!

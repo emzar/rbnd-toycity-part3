@@ -20,7 +20,7 @@ class Brand
   end
 
   def products
-    Product.by_brand(title)
+    Product.find_by_brand(self)
   end
 
   def stock
