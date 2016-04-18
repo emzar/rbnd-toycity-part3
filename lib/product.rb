@@ -1,5 +1,5 @@
 class Product
-  attr_reader :title, :price, :stock
+  attr_reader :title, :price, :stock, :brand
 
   @@products = []
 
@@ -7,6 +7,7 @@ class Product
     @title = options[:title]
     @price = options[:price]
     @stock = options[:stock]
+    @brand = options[:brand]
     add_to_products
   rescue StandardError => error
     puts "#{error.class}: #{error}"
@@ -14,6 +15,10 @@ class Product
 
   def in_stock?
     @stock > 0
+  end
+
+  def brand?(brand_title)
+    brand.title == brand_title
   end
 
   def self.find_by_title(title)
@@ -27,6 +32,10 @@ class Product
 
   def self.in_stock
     @@products.select(&:in_stock?)
+  end
+
+  def self.by_brand(brand_title)
+    @@products.select { |product| product.brand?(brand_title) }
   end
 
   def remove_one_from_stock!

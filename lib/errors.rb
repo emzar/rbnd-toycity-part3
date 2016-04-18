@@ -10,6 +10,12 @@ class DuplicateCustomerError < StandardError
   end
 end
 
+class DuplicateBrandError < StandardError
+  def initialize(title)
+    super("'#{title}' already exists")
+  end
+end
+
 class OutOfStockError < StandardError
   def initialize(title)
     super("'#{title}' is out of stock")
